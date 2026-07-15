@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 
 
-class MultiHeadAttention:
+class MultiHeadAttention(nn.Module):
     def __init__(self, d_model, num_heads):
         super().__init__()
         self.q_proj = nn.Linear(d_model, d_model)
