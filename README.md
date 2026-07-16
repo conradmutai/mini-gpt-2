@@ -1,8 +1,9 @@
 # Mini GPT-2
-_A short blurb about the project_
+A replication of GPT-2 on a smaller scale, utilizing fewer parameters while trying to replicate similar outcomes.
 ## What This Is
 _A more in depth description about the mini-gpt project and more about some brief design decisions_
 ## Architecture
+Word Embeddings -> [X + MultiHeadAttention -> LayerNorm -> X_out + MultiLayerPercerptron -> LayerNorm] * K -> LayerNorm -> Linear -> CrossEntropyLoss
 
 ## Results
 ### Metrics
