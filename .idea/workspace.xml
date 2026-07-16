@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Made MultiHeadAttention an nn Module">
+    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Transformer Completed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +49,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.layers.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main"
   }
@@ -129,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784108110761</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Transformer Completed">
+      <option name="closed" value="true" />
+      <created>1784117190622</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1784117190622</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +158,7 @@
     <MESSAGE value="Made MultiHeadAttention class" />
     <MESSAGE value="Fixed MultiHeadAttention" />
     <MESSAGE value="Made MultiHeadAttention an nn Module" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made MultiHeadAttention an nn Module" />
+    <MESSAGE value="Transformer Completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transformer Completed" />
   </component>
 </project>
