@@ -13,8 +13,11 @@ class GPT(nn.Module):
         self.layernorm = nn.LayerNorm(d_model)
         self.linear = nn.Linear(d_model, vocab_size)
 
-    def forward(self, x, mask):
+    def forward(self, x):
         batch_size, seq_len = x.shape
+
+        ones_matrix = torch.ones(seq_len, seq_len)
+        casual_mask = torch.tril(ones_matrix)  # created in order to mask some of the word embeddings to aid in learning
 
         token_embedding = self.tkn_embedding(x)
         indices = torch.arange(seq_len)
@@ -24,9 +27,25 @@ class GPT(nn.Module):
         out = word_embeddings
 
         for block in self.transformer_blocks:
-            out = block(out, mask)
+            out = block(out, casual_mask)
 
         out = self.layernorm(out)
         out = self.linear(out)
 
         return out
+
+
+# TESTING GPT VALIDITY
+# if __name__ == '__main__':
+#     model = GPT(
+#         vocab_size=50,
+#         max_seq_len=20,
+#         num_layers=2,
+#         num_heads=2,
+#         d_model=16
+#     )
+#
+#     x = torch.randint(0, 50, (2, 10))  # (batch=2, seq_len=10), random token IDs in [0, vocab_size)
+#     out = model(x)
+#
+#     print(out.shape)  # should output torch.Size([2, 10, 50]) - (batch, seq_len, vocab_size)
