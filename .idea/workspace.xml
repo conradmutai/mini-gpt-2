@@ -4,9 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Layers and Model complete">
+    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="GPT completed with masking fixed">
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Alexander_Albon.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Arvid_Lindblad.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Carlos_Sainz_Jr.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Charles_Leclerc.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Esteban_Ocon.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Fernando_Alonso.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Franco_Colapinto.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Gabriel_Bortoleto.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/George_Russell.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Isack_Hadjar.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Kimi_Antonelli.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Lance_Stroll.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Lando_Norris.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Lewis_Hamilton.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Liam_Lawson.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Max_Verstappen.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Nico_Hülkenberg.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Oliver_Bearman.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Oscar_Piastri.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Pierre_Gasly.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Sergio_Pérez.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Valtteri_Bottas.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/fetch_f1_wiki.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/f1_2026_drivers_wikipedia.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Python Unit Test" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -41,20 +64,51 @@
   "associatedIndex": 4
 }]]></component>
   <component name="ProjectId" id="3GSeDJZBeJBwqwWGA4CHpHz83ET" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.fetch_f1_wiki.executor": "Run",
     "Python.layers.executor": "Run",
     "Python.model.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.model">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.fetch_f1_wiki">
+    <configuration name="fetch_f1_wiki" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Mini GPT-2" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/fetch_f1_wiki.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="layers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Mini GPT-2" />
       <option name="ENV_FILES" value="" />
@@ -101,6 +155,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.fetch_f1_wiki" />
         <item itemvalue="Python.model" />
         <item itemvalue="Python.layers" />
       </list>
@@ -170,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784202028583</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="GPT completed with masking fixed">
+      <option name="closed" value="true" />
+      <created>1784219499135</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1784219499135</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,12 +248,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initialize Project" />
     <MESSAGE value="Made MultiHeadAttention class" />
     <MESSAGE value="Fixed MultiHeadAttention" />
     <MESSAGE value="Made MultiHeadAttention an nn Module" />
     <MESSAGE value="Transformer Completed" />
     <MESSAGE value="Layers and Model complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Layers and Model complete" />
+    <MESSAGE value="GPT completed with masking fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="GPT completed with masking fixed" />
   </component>
 </project>
