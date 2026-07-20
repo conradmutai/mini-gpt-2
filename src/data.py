@@ -1,8 +1,7 @@
 import re
-
-
-import re
-
+import torch
+import random
+from pathlib import Path
 
 class Tokenizer:
     # regex pattern — alternatives ordered most-specific-first
@@ -45,6 +44,37 @@ class Tokenizer:
 
     def decode(self, ids):
         return " ".join(self.id_to_word.get(i, self.UNK) for i in ids)
+
+
+# for loading files in directory
+def load_dir(dir_path):
+    return_str = []  # list used to store all words from the files loaded
+    directory = Path(dir_path)
+
+    for item in directory.iterdir():
+        if item.is_file():
+            with open(item, "r", encoding="utf-8") as f:
+                return_str.append(f.read())  # appending contents of file to the str list
+
+    return '\n\n'.join(return_str)  # making it into a singular string with spacing in between
+
+
+def make_batches(batch_list, batch_size, shuffle=True):
+    if shuffle:
+        random.shuffle(batch_list)  # shuffles the batch list to make better training data
+
+    batches = []  # list to store batches
+    num_batches = len(batch_list) // batch_size
+
+    for b in range(num_batches):
+        chunk = batch_list[b * batch_size: (b + 1) * batch_size]  # creates the chunk
+
+        inputs = torch.tensor([pair[0] for pair in chunk], dtype=torch.long)  # makes the inputs a tensor and same for targets
+        targets = torch.tensor([pair[1] for pair in chunk], dtype=torch.long)
+
+        batches.append((inputs, targets))  # appends this to batches
+
+    return batches
 
 
 # TESTING PATTERN
