@@ -3,6 +3,8 @@ import torch
 import random
 from pathlib import Path
 
+from collections import Counter
+
 class Tokenizer:
     # regex pattern — alternatives ordered most-specific-first
     PATTERN = r'''(?x)
@@ -27,9 +29,11 @@ class Tokenizer:
     def tokenize(self, text):
         return re.findall(self.regex, text)  # turns text into tokens based off the pattern
 
-    def build_vocab(self, corpus):
-        tokens = self.tokenize(corpus)  # creates tokens
-        unique = sorted(set(tokens))  # sorts the set of unique tokens
+    def build_vocab(self, corpus, min_freq=3):
+        tokens = self.tokenize(corpus)
+        counts = Counter(tokens)
+
+        unique = sorted(w for w, c in counts.items() if c >= min_freq)
 
         self.word_to_id = {self.UNK: 0}
         self.id_to_word = {0: self.UNK}
@@ -133,14 +137,15 @@ if __name__ == '__main__':
     print(f"One batch's input shape: {batches[0][0].shape}")
     print(f"One batch's target shape: {batches[0][1].shape}")
 
+    tokens = tokenizer.tokenize(corpus)
+    counts = Counter(tokens)
 
-#     pattern = r'''(?x)
-#      (?:\d{1,2}:)?\d{1,2}:\d{2}(?:\.\d+)?    # race/lap times
-#     |(?:[A-Z]\.)+                            # abbreviations
-#     |\w+(?:-\w+)*                            # hyphen words
-#     |\$?\d+(?:\.\d+)?%?                      # currency, percentages
-#     |[][.,;"'?():_`-]                        # separate tokens
-#     '''
-#
-#     test = re.findall(pattern, "That U.S.A. poster-print costs $12.40...")
-#     print(test)
+    print(f"Total tokens: {len(tokens):,}")
+    print(f"Unique types: {len(counts):,}")
+
+    for threshold in (1, 2, 3, 5, 10):
+        n = sum(1 for c in counts.values() if c < threshold + 1)
+        pct = 100 * n / len(counts)
+        print(f"Types appearing <= {threshold} times: {n:,} ({pct:.1f}%)")
+
+    print("\nMost common:", counts.most_common(15))
