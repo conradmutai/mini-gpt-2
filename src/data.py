@@ -25,23 +25,26 @@ class Tokenizer:
         return len(self.word_to_id)
 
     def tokenize(self, text):
-        return re.findall(self.regex, text)
+        return re.findall(self.regex, text)  # turns text into tokens based off the pattern
 
     def build_vocab(self, corpus):
-        tokens = self.tokenize(corpus)
-        unique = sorted(set(tokens))
+        tokens = self.tokenize(corpus)  # creates tokens
+        unique = sorted(set(tokens))  # sorts the set of unique tokens
 
         self.word_to_id = {self.UNK: 0}
         self.id_to_word = {0: self.UNK}
 
+        # converts the tokens into ids and vice versa
         for i, word in enumerate(unique, start=1):
             self.word_to_id[word] = i
             self.id_to_word[i] = word
 
-    def encode(self, text):
-        tokens = self.tokenize(text)
+    # encodes the text by turning tokens into token ids
+    def encode(self, corpus):
+        tokens = self.tokenize(corpus)
         return [self.word_to_id.get(token, 0) for token in tokens]
 
+    # turns token ids back into tokens
     def decode(self, ids):
         return " ".join(self.id_to_word.get(i, self.UNK) for i in ids)
 
@@ -57,6 +60,23 @@ def load_dir(dir_path):
                 return_str.append(f.read())  # appending contents of file to the str list
 
     return '\n\n'.join(return_str)  # making it into a singular string with spacing in between
+
+
+def batching(tokenizer, corpus, seq_len):
+    token_ids = tokenizer.encode(corpus)  # encoding the text into token ids
+    num_windows = (len(token_ids) - 1) // seq_len  # creating the appropriate amount of windows
+    batch_list = []
+
+    for i in range(num_windows):
+        start = i * seq_len  # the starting point of the batch
+        chunk = token_ids[start: start + seq_len + 1]  # creates a chunk with the token ids
+
+        input_seq = chunk[0: seq_len]  # the initial sequence
+        target_seq = chunk[1: seq_len + 1]  # the sequence to follow
+
+        batch_list.append((input_seq, target_seq))  # added to batch list
+
+    return batch_list
 
 
 def make_batches(batch_list, batch_size, shuffle=True):
@@ -77,8 +97,43 @@ def make_batches(batch_list, batch_size, shuffle=True):
     return batches
 
 
-# TESTING PATTERN
-# if __name__ == '__main__':
+# TESTING
+if __name__ == '__main__':
+    DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "f1_wiki_pages"
+    corpus = load_dir(DATA_DIR)
+
+    print(f"Corpus length (characters): {len(corpus):,}")
+
+    tokenizer = Tokenizer()
+    tokenizer.build_vocab(corpus)
+    print(f"Vocab size: {tokenizer.vocab_size}")
+
+    ids = tokenizer.encode(corpus)
+    print(f"Total tokens: {len(ids):,}")
+
+    # round-trip check on a small slice
+    sample_ids = ids[:20]
+    decoded = tokenizer.decode(sample_ids)
+    print(f"First 20 token IDs: {sample_ids}")
+    print(f"Decoded back: {decoded}")
+
+    # unknown-word check
+    unk_test = tokenizer.encode("qzxjjjklm")
+    print(f"Unknown word encodes to: {unk_test}")  # should be [0]
+
+    # batching sanity check
+    seq_len = 128
+    batch_list = batching(tokenizer, corpus, seq_len)
+    print(f"Total windows: {len(batch_list)}")
+    print(f"First window input length: {len(batch_list[0][0])}")
+    print(f"First window target length: {len(batch_list[0][1])}")
+
+    batches = make_batches(batch_list, batch_size=32)
+    print(f"Total batches: {len(batches)}")
+    print(f"One batch's input shape: {batches[0][0].shape}")
+    print(f"One batch's target shape: {batches[0][1].shape}")
+
+
 #     pattern = r'''(?x)
 #      (?:\d{1,2}:)?\d{1,2}:\d{2}(?:\.\d+)?    # race/lap times
 #     |(?:[A-Z]\.)+                            # abbreviations
