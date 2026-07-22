@@ -4,67 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Completed train.py">
-      <change afterPath="$PROJECT_DIR$/data/f1_2026_drivers_wikipedia.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2010_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2011_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2012_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2013_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2014_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2015_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2016_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2017_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2018_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2019_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2020_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2021_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2022_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2023_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2024_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/2025_Formula_One_World_Championship.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Albert_Park_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Alexander_Dunne.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Autódromo_Hermanos_Rodríguez.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Autódromo_José_Carlos_Pace.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Bahrain_International_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Baku_City_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Cian_Shields.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Circuit_Gilles_Villeneuve.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Circuit_Zandvoort.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Circuit_de_Barcelona-Catalunya.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Circuit_de_Monaco.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Circuit_de_Spa-Francorchamps.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Circuit_of_the_Americas.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Dino_Beganovic.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Gabriele_Minì.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Hungaroring.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Jeddah_Corniche_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/John_Bennett.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Joshua_Dürksen.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Kush_Maini.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Las_Vegas_Strip_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Laurens_van_Hoepen.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Lusail_International_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Madring.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Mari_Boya.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Marina_Bay_Street_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Martinius_Stenshorne.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Miami_International_Autodrome.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Monza_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Nicolás_Varrone.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Nikola_Tsolov.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Noel_León.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Rafael_Câmara.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Rafael_Villagómez.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Red_Bull_Ring.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Sebastián_Montoya.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Shanghai_International_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Silverstone_Circuit.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Suzuka_International_Racing_Course.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Tasanapol_Inthraphuvasak.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/f1_wiki_pages/Yas_Marina_Circuit.txt" afterDir="false" />
+    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Added more training data and modified the vocab building">
+      <change afterPath="$PROJECT_DIR$/results/best_model.pt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/fetch_f1_wiki.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/fetch_f1_wiki.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
     </list>
@@ -360,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784631074053</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added more training data and modified the vocab building">
+      <option name="closed" value="true" />
+      <created>1784655940651</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1784655940651</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -387,6 +337,7 @@
     <MESSAGE value="data.py completed" />
     <MESSAGE value="Testing Data.py" />
     <MESSAGE value="Completed train.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed train.py" />
+    <MESSAGE value="Added more training data and modified the vocab building" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more training data and modified the vocab building" />
   </component>
 </project>

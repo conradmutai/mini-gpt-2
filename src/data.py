@@ -5,6 +5,7 @@ from pathlib import Path
 
 from collections import Counter
 
+
 class Tokenizer:
     # regex pattern — alternatives ordered most-specific-first
     PATTERN = r'''(?x)

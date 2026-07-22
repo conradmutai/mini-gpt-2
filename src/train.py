@@ -1,3 +1,4 @@
+import json
 import random
 import torch
 
@@ -9,6 +10,10 @@ from pathlib import Path
 from .model import GPT
 from .data import Tokenizer, load_dir, batching, make_batches
 
+# Path for saving data and results
+RESULTS_PATH = Path(__file__).resolve().parent.parent / "results" / "best_model.pt"
+VOCAB_PATH = Path(__file__).resolve().parent.parent / "results" / "vocab.json"
+
 # loading the data
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "f1_wiki_pages"  # creates a universal path to the data
 corpus = load_dir(DATA_DIR)
@@ -19,6 +24,11 @@ random.seed(0)
 # building the vocab, tokens and token ids, as well as calculating the vocab_size
 tokenizer = Tokenizer()
 tokenizer.build_vocab(corpus)
+
+# saving the vocab
+with open(VOCAB_PATH, "w", encoding="utf-8") as f:
+    json.dump(tokenizer.word_to_id, f, ensure_ascii=False)
+
 token_ids = tokenizer.encode(corpus)
 vocab_size = tokenizer.vocab_size
 
@@ -88,6 +98,11 @@ def train(epochs):
 
         avg_val = sum(val_losses) / len(val_losses)
         val_loss_list.append(avg_val)
+
+        # saves the best result in a torch readable file, so it can be used in training
+        if avg_val < max(val_loss_list):
+            torch.save(model.state_dict(), RESULTS_PATH)
+
         print(f"epoch: {e + 1}, train loss: {round(avg_loss, 4)}, val loss: {round(avg_val, 4)}")
 
     return loss_list, val_loss_list
