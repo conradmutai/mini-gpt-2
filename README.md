@@ -1,7 +1,8 @@
 # Mini GPT-2
 A replication of GPT-2 on a smaller scale, utilizing fewer parameters while trying to replicate similar outcomes.
 ## What This Is
-_A more in depth description about the mini-gpt project and more about some brief design decisions_
+This project is a word-level transformer language decoder that is GPT-2 inspired. It has been trained on F1/F2 drivers, the respective circuits they race on, and the F1 seasons from 2010 onwards to 2025 via Wikipedia. The goal of this project was for a user to input a name, phrase, or anything, and the model would respond with a continuation of the user's prompt and write a set amount of words.
+
 ## Architecture
 Word Embeddings -> [X + MultiHeadAttention -> LayerNorm -> X_out + MultiLayerPercerptron -> LayerNorm] * K -> LayerNorm -> Linear -> CrossEntropyLoss
 
@@ -41,6 +42,12 @@ There are several typical means of gathering data to train a model, with the mos
 
 The main reason for choosing the Formula racing series, their tracks, and history is due to the fact that I am quite knowledgeable about them, making it easier for me to validate what the model presents.
 
+### Tokenizer Decisions
+This model chose to use word-level regex for the tokenizers, as it allowed for easier processing on a small model and didn't require such a huge and heavy model to work in the first place. It also made finding the context easier for each next token in the model.
+
+### Sampling Strategy
+Temperature + Top-K was decided upon for this as it didn't create as plain of texts, and allowed the model to also create sentences with better context.
+
 ### Initial Design Decisions for Model Parameters
 The standard GPT-3 model maintains 96 layers of the transformer block and a proportionate number of heads between the word embeddings and the layer normalization prior. But this isn't something that would fit the model, and usually requires a large amount of tokens and unique vocab, which is not at the expense of the model, and in addition goes against the fact that we aim to build a Mini GPT-2 model. So to initialize the project, it began with 10 layers, 8 heads, and 256 dimensions for the model. To emphasize the number of heads, it must proportionately divide the dimensions of the model, and it is typically better to have a small amount.
 
@@ -54,6 +61,10 @@ The table below contains tracked changes that were made across training, each on
 | Min-frequency vocab cutoff (15.3K → ~6.3K) |	4.33 | epoch 6 |
 
 ### Debugging Narrative 
+Points to add:
+- Adding val loss to see reality and diagnose overfitting
+- train/val split
+- Looked at diverging curves (add fix)
 
 ## How to Run the Model
 To install libraries:
