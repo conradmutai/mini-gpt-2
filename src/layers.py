@@ -17,13 +17,14 @@ class MultiHeadSelfAttention(nn.Module):
     def forward(self, x, mask=None):
         batch_size, seq_len, _ = x.shape
 
-        Q = self.q_proj(x).view(batch_size, seq_len, self.num_heads, self.head_dim)
-        K = self.k_proj(x).view(batch_size, seq_len, self.num_heads, self.head_dim)
-        V = self.v_proj(x).view(batch_size, seq_len, self.num_heads, self.head_dim)
+        Q = self.q_proj(x).view(batch_size, seq_len, self.num_heads, self.head_dim)  # queries
+        K = self.k_proj(x).view(batch_size, seq_len, self.num_heads, self.head_dim)  # keys
+        V = self.v_proj(x).view(batch_size, seq_len, self.num_heads, self.head_dim)  # values
 
         mh_sa_array = []
 
         for h in range(self.num_heads):
+            # taking a slice from each of the matrices for self attention
             q_slice = Q[:, :, h, :]  # (batch, seq_len, head_dim)
             k_slice = K[:, :, h, :]
             v_slice = V[:, :, h, :]
@@ -31,6 +32,7 @@ class MultiHeadSelfAttention(nn.Module):
             dot_product = q_slice @ k_slice.transpose(1, 2)  # (batch, seq_len, seq_len)
             dot_product_div = dot_product / (self.head_dim ** 0.5)
 
+            # applying the mask to the data to help the model learn rather than memorize
             if mask is not None:
                 dot_product_div = torch.where(mask == 0, torch.tensor(-1e9), dot_product_div)
 
@@ -39,8 +41,9 @@ class MultiHeadSelfAttention(nn.Module):
 
             mh_sa_array.append(sa)
 
+        # concatenates the list of matrices
         mh_sa_concat = torch.cat(mh_sa_array, dim=-1)
-        mh_sa = self.omega_c(mh_sa_concat)
+        mh_sa = self.omega_c(mh_sa_concat)  # applies omega_c to it
 
         return mh_sa
 
@@ -76,11 +79,3 @@ class TransformerBlock(nn.Module):
         x_out = self.layernorm2(x_out)
 
         return x_out
-
-
-# TESTING BLOCK FOR TRANSFORMER
-# if __name__ == '__main__':
-#     block = TransformerBlock(d_model=16, num_heads=2)
-#     x = torch.randn(2, 5, 16)  # (batch, seq_len, d_model)
-#     out = block(x)
-#     print(out.shape)  # should be (2, 5, 16) — identical to input

@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Model Working">
+    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Completed Model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/best_model.pt" beforeDir="false" afterPath="$PROJECT_DIR$/results/best_model.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_layers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_layers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Unit Test" />
         <option value="Python Script" />
+        <option value="Python Unit Test" />
       </list>
     </option>
   </component>
@@ -51,20 +52,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.data.executor": "Run",
-    "Python.fetch_f1_wiki.executor": "Run",
-    "Python.generate.executor": "Run",
-    "Python.layers.executor": "Run",
-    "Python.model.executor": "Run",
-    "Python.train.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fetch_f1_wiki.executor&quot;: &quot;Run&quot;,
+    &quot;Python.generate.executor&quot;: &quot;Run&quot;,
+    &quot;Python.layers.executor&quot;: &quot;Run&quot;,
+    &quot;Python.model.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data" />
@@ -329,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784800401490</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Completed Model">
+      <option name="closed" value="true" />
+      <created>1784805574986</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1784805574986</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -359,6 +368,7 @@
     <MESSAGE value="Added more training data and modified the vocab building" />
     <MESSAGE value="Saved data for generate.py" />
     <MESSAGE value="Model Working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Model Working" />
+    <MESSAGE value="Completed Model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed Model" />
   </component>
 </project>

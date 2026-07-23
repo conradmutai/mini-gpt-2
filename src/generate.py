@@ -41,10 +41,6 @@ def generate(text_input, max_new_tokens=100, max_seq_len=128):
         outputs = model(inputs)
         prediction = outputs[:, -1, :]
 
-        # Option 1: Greedy Algorithm
-        # probs = torch.argmax(prediction).item()
-        # id_list.append(probs)
-
         # Option 2: Top K
         prediction = prediction / 1.2
         values, indices = torch.topk(prediction, k=15, dim=1, largest=True, sorted=True)
