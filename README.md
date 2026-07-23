@@ -52,7 +52,7 @@ Temperature + Top-K was decided upon for this as it didn't create as plain of te
 The standard GPT-3 model maintains 96 layers of the transformer block and a proportionate number of heads between the word embeddings and the layer normalization prior. But this isn't something that would fit the model, and usually requires a large amount of tokens and unique vocab, which is not at the expense of the model, and in addition goes against the fact that we aim to build a Mini GPT-2 model. So to initialize the project, it began with 10 layers, 8 heads, and 256 dimensions for the model. To emphasize the number of heads, it must proportionately divide the dimensions of the model, and it is typically better to have a small amount.
 
 ### Final Design Decisions for Model Parameters
-The table below contains tracked changes that were made across training, each one making progress in reducing the validation loss. It is also quite visible that the loss takes a turn around epoch 6, leading to the decision to reduce the epochs further down to this point to prevent factors like overfitting and overtraining. Another key point to make was the reduction of the number of layers as well as model dimensions. This was done as in some cases the training loss went down to 0.02 very fast, indicating the fact that there was overfitting present in the model and that it was tending to memorize rather than learn.
+The table below contains tracked changes that were made across training, each one making progress in reducing the validation loss. It is also quite visible that the loss takes a turn around epoch 6, leading to the decision to reduce the epochs further down to this point to prevent factors like overfitting and overtraining. Another key point to make was the reduction of the number of layers as well as model dimensions. This was done as, in some cases, the training loss went down to 0.02 very fast, indicating the fact that there was overfitting present in the model and that it was tending to memorize rather than learn.
 
 | Change | Best val loss (ln(vocab_size)) | Turning point |
 | --- | --- | --- |
@@ -61,10 +61,9 @@ The table below contains tracked changes that were made across training, each on
 | Min-frequency vocab cutoff (15.3K → ~6.3K) |	4.33 | epoch 6 |
 
 ### Debugging Narrative 
-Points to add:
-- Adding val loss to see reality and diagnose overfitting
-- train/val split
-- Looked at diverging curves (add fix)
+Several steps had to be taken to get an operational model. The steps taken to debug and reach this operational state range from the addition of a train/val split, bundled with validation loss, and analyzing diverging curves occurring within the model.
+
+The addition of the training/validation split enables us to verify several facts, including whether the model is truly performing as intended based on the divergence of the training loss and validation loss. If such divergence exists where training loss is very low (approaching 0) and the validation loss remains at around a loss of 5.0, it can help with the identification of whether the model is properly predicting or it is more so just memorizing. This, in turn, was the case of the model, and it allowed me to finish the 
 
 ## How to Run the Model
 To install libraries:
@@ -89,6 +88,7 @@ python -m src.generate
 
 ## What I Learned
 At first, there were a few issues that I struggled with while creating the model that led to major learning points. These include instances such as memorization/overfitting diagnosis, shape issues in attention, the softmax being applied twice, and the tokenizer edge case.
+
 ### Memorization/Overfitting
 Initially, during training, it achieved a training loss of 0.003, leading to the assumption that it was performing very well. When looking into ways to generate the text, I realized that the model was actually memorizing; when prompted, it tended to perform poorly in practice. Later on, I had to realize that the lack of a validation and test set led to a gap in understanding, as those would truly allow us to realize the model's performance.
 
@@ -99,8 +99,10 @@ A small data set on such a large model will cause the self-attention to keep bei
 The next realization is that the lack of overlapping windows led to very few gradient updates per epoch. With a stride equal to the sequence length, few windows were produced, and the model saw a very small fixed set of examples again and again, leading to this sort of memorization.
 
 ### Attentions Shape Issues
+While creating the multi-head self-attention, several factors needed to be accounted for, and the one that I failed to account for was the shapes of the variables Queries, Keys, and Values, all having different shapes, leading to errors during the calculations that were part of the self-attention. Fixing this led to the appropriate behaviour for multi-head self-attention.
 
 ### Softmax-Applied-Twice
+At first, softmax was applied within the .forward() of the GPT; however, this would in turn cause the issue softmax(softmax(x)), as the model's results were to be fed in either way. This led to the removal of it from within the GPT.forward() function, and the choice for the model to rather return raw logits.
 
 ## References
 - Understanding Deep Learning. _Understanding Deep Learning_ [https://udlbook.github.io/udlbook/](url)
