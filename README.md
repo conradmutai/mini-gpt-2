@@ -67,7 +67,7 @@ The table below contains tracked changes that were made across training, each on
 ### Debugging Narrative 
 Several steps had to be taken to get an operational model. The steps taken to debug and reach this operational state range from the addition of a train/val split, bundled with validation loss, and analyzing diverging curves occurring within the model.
 
-The addition of the training/validation split enables us to verify several facts, including whether the model is truly performing as intended based on the divergence of the training loss and validation loss. If such divergence exists where training loss is very low (approaching 0) and the validation loss remains at around a loss of 5.0, it can help with the identification of whether the model is properly predicting or it is more so just memorizing. This, in turn, was the case of the model, and it allowed me to finish the 
+The addition of the training/validation split enables us to verify several facts, including whether the model is truly performing as intended based on the divergence of the training loss and validation loss. If such divergence exists where training loss is very low (approaching 0) and the validation loss remains at around a loss of 5.0, it can help with the identification of whether the model is properly predicting or it is more so just memorizing. This, in turn, was the case with the model, and allowed us to pinpoint deeper issues as highlighted in the **Memorization/Overfitting** section.
 
 ## How to Run the Model
 To install libraries:
