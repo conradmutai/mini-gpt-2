@@ -10,7 +10,7 @@ Word Embeddings -> [X + MultiHeadAttention -> LayerNorm -> X_out + MultiLayerPer
 - num_layers = 5
 - num_heads = 8
 - d_model = 128
-- vocab_size = 4,352 (length of the vocab from the data loaded)
+- vocab_size = ~6.3K (length of the vocab from the data loaded)
 - seq_len = 128
 
 ## Results
@@ -43,13 +43,17 @@ There are several typical means of gathering data to train a model, with the mos
 The main reason for choosing the Formula racing series, their tracks, and history is due to the fact that I am quite knowledgeable about them, making it easier for me to validate what the model presents.
 
 ### Tokenizer Decisions
-This model chose to use word-level regex for the tokenizers, as it allowed for easier processing on a small model and didn't require such a huge and heavy model to work in the first place. It also made finding the context easier for each next token in the model.
+This model chose to use word-level regex for the tokenizer, as it allowed for easier processing on a small model and didn't require such a huge and heavy model to work in the first place. It also made finding the context easier for each next token in the model.
+
+The regex pattern itself was built up in stages, with each alternative added to handle a specific case found in the F1 corpus: race and lap times (e.g. 1:32.740), abbreviations (e.g. U.S.A.), hyphenated words, currency and percentages, and standalone punctuation. These alternatives were ordered from most specific to least specific, as regex alternation is first-match-wins, meaning a general rule placed too early would swallow up cases meant for a more specific rule further down. Circuit names such as "Circuit de Monaco" were deliberately left unhandled by any special rule, as splitting them into ordinary words ("Circuit", "de", "Monaco") still leaves the model with learnable tokens, unlike a lap time, where naive splitting would produce meaningless fragments like "1", ":", "32".
+
+A further decision was made regarding the vocabulary itself. Since the corpus followed a heavily skewed frequency distribution (roughly 44% of unique word types appeared only once), a minimum-frequency cutoff was applied when building the vocabulary, and any word below that threshold was mapped to a reserved <UNK> token instead of being given its own ID. This reduced the vocabulary size significantly and meant the model wasn't trying to learn meaningful embeddings for words it had only seen a handful of times, which also tied directly into reducing the overfitting discussed above.
 
 ### Sampling Strategy
 Temperature + Top-K was decided upon for this as it didn't create as plain of texts, and allowed the model to also create sentences with better context.
 
 ### Initial Design Decisions for Model Parameters
-The standard GPT-3 model maintains 96 layers of the transformer block and a proportionate number of heads between the word embeddings and the layer normalization prior. But this isn't something that would fit the model, and usually requires a large amount of tokens and unique vocab, which is not at the expense of the model, and in addition goes against the fact that we aim to build a Mini GPT-2 model. So to initialize the project, it began with 10 layers, 8 heads, and 256 dimensions for the model. To emphasize the number of heads, it must proportionately divide the dimensions of the model, and it is typically better to have a small amount.
+The standard GPT-3 model maintains 96 layers of the transformer block and a proportionate number of heads between the word embeddings and the layer normalization prior. But this isn't something that would fit the model, and usually requires a large amount of tokens and unique vocab, which is at the cost of far more compute and data than available for this project. In addition goes against the fact that we aim to build a Mini GPT-2 model. So to initialize the project, it began with 10 layers, 8 heads, and 256 dimensions for the model. To emphasize the number of heads, it must proportionately divide the dimensions of the model, and it is typically better to have a small amount.
 
 ### Final Design Decisions for Model Parameters
 The table below contains tracked changes that were made across training, each one making progress in reducing the validation loss. It is also quite visible that the loss takes a turn around epoch 6, leading to the decision to reduce the epochs further down to this point to prevent factors like overfitting and overtraining. Another key point to make was the reduction of the number of layers as well as model dimensions. This was done as, in some cases, the training loss went down to 0.02 very fast, indicating the fact that there was overfitting present in the model and that it was tending to memorize rather than learn.
@@ -94,7 +98,7 @@ Initially, during training, it achieved a training loss of 0.003, leading to the
 
 After diagnosing that problem, this led to a further deep dive into other underlying issues causing this memorization, such as a small dataset with a small vocabulary (22 driver articles) on a big model (10-layer, 256-dimensional model) and non-overlapping windows leading to fewer gradient updates per epoch. 
 
-A small data set on such a large model will cause the self-attention to keep being fed into itself continuously until the point that it is almost a matrix of 1s, meaning that the model in turn will end up always producing a near 0.0 loss, which led to me realizing that with a small data set, it is better to reduce the dimensionality of the model and also the number of transformer blocks to combat this issue.
+The model had sufficient capacity to memorize the training windows outright rather than learn generalizable patterns, meaning that the model in turn will end up always producing a near 0.0 loss, which led to me realizing that with a small dataset, it is better to reduce the dimensionality of the model and also the number of transformer blocks to combat this issue.
 
 The next realization is that the lack of overlapping windows led to very few gradient updates per epoch. With a stride equal to the sequence length, few windows were produced, and the model saw a very small fixed set of examples again and again, leading to this sort of memorization.
 
