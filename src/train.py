@@ -40,7 +40,7 @@ criterion = nn.CrossEntropyLoss()
 
 def train(epochs):
     # batching
-    batch_list = batching(tokenizer, corpus, seq_len=128)
+    batch_list = batching(tokenizer, corpus, seq_len=128, stride=32)
 
     # splitting the batching into training windows and validation windows
     split_idx = int(len(batch_list) * 0.9)
@@ -109,6 +109,7 @@ def train(epochs):
 
     return loss_list, val_loss_list
 
+
 # testing the model
 if __name__ == '__main__':
-    train(epochs=10)
+    train(epochs=40)

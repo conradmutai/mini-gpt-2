@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Saved data for generate.py">
+    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Model Working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/best_model.pt" beforeDir="false" afterPath="$PROJECT_DIR$/results/best_model.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
     </list>
@@ -320,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784716489754</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Model Working">
+      <option name="closed" value="true" />
+      <created>1784800401490</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1784800401490</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -349,6 +358,7 @@
     <MESSAGE value="Completed train.py" />
     <MESSAGE value="Added more training data and modified the vocab building" />
     <MESSAGE value="Saved data for generate.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Saved data for generate.py" />
+    <MESSAGE value="Model Working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Model Working" />
   </component>
 </project>

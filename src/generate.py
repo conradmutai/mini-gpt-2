@@ -45,12 +45,14 @@ def generate(text_input, max_new_tokens=100, max_seq_len=128):
         # probs = torch.argmax(prediction).item()
         # id_list.append(probs)
 
-        # Option 2
+        # Option 2: Top K
         prediction = prediction / 1.2
-        probs = F.softmax(prediction, dim=1)
+        values, indices = torch.topk(prediction, k=15, dim=1, largest=True, sorted=True)
+        probs = F.softmax(values, dim=1)
         next_id = torch.multinomial(probs, num_samples=1).item()
+        real_id = indices[:, next_id].item()
 
-        id_list.append(next_id)
+        id_list.append(real_id)
 
     return tokenizer.decode(id_list)
 
