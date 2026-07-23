@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Added more training data and modified the vocab building">
-      <change afterPath="$PROJECT_DIR$/results/best_model.pt" afterDir="false" />
+    <list default="true" id="b06cd566-14b8-4117-afd4-43eb023ba45e" name="Changes" comment="Saved data for generate.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/best_model.pt" beforeDir="false" afterPath="$PROJECT_DIR$/results/best_model.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,21 +27,21 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "conradmutai"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;conradmutai&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/conradmutai/mini-gpt-2.git",
-    "accountId": "96d00d2a-e02f-4c54-a612-5d517d3e454e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/conradmutai/mini-gpt-2.git&quot;,
+    &quot;accountId&quot;: &quot;96d00d2a-e02f-4c54-a612-5d517d3e454e&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="3GSeDJZBeJBwqwWGA4CHpHz83ET" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -55,11 +55,13 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Python.data.executor": "Run",
     "Python.fetch_f1_wiki.executor": "Run",
+    "Python.generate.executor": "Run",
     "Python.layers.executor": "Run",
     "Python.model.executor": "Run",
     "Python.train.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -114,7 +116,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="layers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="generate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Mini GPT-2" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -127,7 +129,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/layers.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/generate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -183,10 +185,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.data" />
+        <item itemvalue="Python.generate" />
         <item itemvalue="Python.train" />
         <item itemvalue="Python.fetch_f1_wiki" />
         <item itemvalue="Python.model" />
-        <item itemvalue="Python.layers" />
       </list>
     </recent_temporary>
   </component>
@@ -310,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784655940651</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Saved data for generate.py">
+      <option name="closed" value="true" />
+      <created>1784716489754</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1784716489754</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -338,6 +348,7 @@
     <MESSAGE value="Testing Data.py" />
     <MESSAGE value="Completed train.py" />
     <MESSAGE value="Added more training data and modified the vocab building" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more training data and modified the vocab building" />
+    <MESSAGE value="Saved data for generate.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Saved data for generate.py" />
   </component>
 </project>

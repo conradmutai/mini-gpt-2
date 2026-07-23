@@ -60,6 +60,7 @@ def train(epochs):
         random.shuffle(batches)
 
         epoch_losses = []
+        best_val = float('inf')
 
         for inputs, targets in batches:
             # forward pass
@@ -100,7 +101,8 @@ def train(epochs):
         val_loss_list.append(avg_val)
 
         # saves the best result in a torch readable file, so it can be used in training
-        if avg_val < max(val_loss_list):
+        if avg_val < best_val:
+            best_val = avg_val
             torch.save(model.state_dict(), RESULTS_PATH)
 
         print(f"epoch: {e + 1}, train loss: {round(avg_loss, 4)}, val loss: {round(avg_val, 4)}")
